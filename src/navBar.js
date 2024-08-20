@@ -1,9 +1,15 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import { MyContext } from "./MyContext";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [tabSize, setTabSize] = useState(true);
     const [MobSize, setMobSize] = useState(true);
+    const {itemCount} = useContext(MyContext);
+    const navigate = useNavigate();
+
+    const totalItemCounts = Object.values(itemCount).reduce((acc, count)=> acc+count, 0);
 
     useEffect(()=> {
         const handleResize = () => {
@@ -52,9 +58,12 @@ export default function NavBar() {
             </div>
             <div className="flex items-center gap-4 mr-3">
                 {!MobSize ? <img width="30" height="30" src="https://img.icons8.com/ios/50/search--v1.png" alt="search--v1"/> : null}
-                <div className="flex items-center gap-1 shrink-0">
-                    <img className={`${!tabSize ? "w-[25px] h[25px]" : "w-[35px] h[35px]"}`} src="https://img.icons8.com/ios/50/shopping-cart--v1.png" alt="shopping-cart--v1"/>
-                    {tabSize ? <nav>Cart</nav> : null}
+                <div onClick={()=> navigate("/viewcart")} className="relative cursor-pointer flex items-center gap-1 shrink-0">
+                    <img className={`${!tabSize ? "w-[35px] h[35px]" : "w-[35px] h[35px]"}`} src="https://img.icons8.com/ios/50/shopping-cart--v1.png" alt="shopping-cart--v1"/>
+                    {tabSize ? <nav className="cursor-pointer">Cart</nav> : null}
+                    <span className={`${!tabSize ? "right-0" : "right-6"} absolute top-0 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center`}>
+                    {totalItemCounts}
+                </span>
                 </div>
                 <div className="flex shrink-0 items-center gap-1">
                     <img className={`${!tabSize ? "w-[25px] h[25px]" : "w-[35px] h[35px]"}`} src="https://img.icons8.com/pastel-glyph/64/user-male-circle.png" alt="user-male-circle"/>

@@ -27,7 +27,7 @@ function App() {
 
 useEffect(()=> {
   fetchProducts();
-}, [])
+}, [getData])
 
 function handleShowPopUp() {
   setShowPopUp(true);

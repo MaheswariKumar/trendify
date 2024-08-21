@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react"
 import { MyContext } from "./MyContext";
 import { useNavigate } from "react-router-dom";
 
-export default function NavBar() {
+export default function TopNav() {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [tabSize, setTabSize] = useState(true);
     const [MobSize, setMobSize] = useState(true);

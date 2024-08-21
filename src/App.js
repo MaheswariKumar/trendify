@@ -3,7 +3,7 @@ import './App.css';
 import { useState, useEffect} from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Dashboard from './Dashboard';
-import NavBar from './NavBar';
+import TopNav from './TopNav';
 import { MyContext } from './MyContext';
 import CartItems from './CartItems';
 
@@ -41,7 +41,7 @@ function handleShowPopUp() {
     <>
     <BrowserRouter>
           <MyContext.Provider value={{itemCount, setItemCount, getData, handleShowPopUp, setShowMessage}}>
-          <NavBar />
+          <TopNav />
     <Routes>
 
 

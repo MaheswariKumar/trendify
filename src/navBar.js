@@ -40,8 +40,8 @@ export default function NavBar() {
         <>
         <div className="flex justify-between gap-14 items-center bg-pink-300 fixed w-full h-16">
             <div className={`${!MobSize ? "flex items-center pl-2 pt-1 gap-2" : "flex items-center pl-2 pt-1 gap-2"}`}>
-                <img className={`${!MobSize ? "rounded-full w-[35px] h-[35px]" : "rounded-full w-[48px] h-[48px]"}`} src="https://img.icons8.com/external-filled-outline-02-chattapat-/64/external-skateboard-sales-filled-outline-02-chattapat-.png" alt="external-skateboard-sales-filled-outline-02-chattapat-"/>
-                <div className={`${!MobSize ? "flex items-center text-3xl" : "flex items-center gap-2 text-3xl"}`}>
+                <img onClick={()=> navigate("/")} className={`${!MobSize ? "cursor-pointer rounded-full w-[35px] h-[35px]" : "cursor-pointer rounded-full w-[48px] h-[48px]"}`} src="https://img.icons8.com/external-filled-outline-02-chattapat-/64/external-skateboard-sales-filled-outline-02-chattapat-.png" alt="external-skateboard-sales-filled-outline-02-chattapat-"/>
+                <div onClick={()=> navigate("/")} className={`${!MobSize ? "cursor-pointer flex items-center text-3xl" : "cursor-pointer flex items-center gap-2 text-3xl"}`}>
                     <nav className="trend">t</nav>
                     <nav className="trend">r</nav>
                     <nav className="trend">e</nav>
@@ -61,9 +61,9 @@ export default function NavBar() {
                 <div onClick={()=> navigate("/viewcart")} className="relative cursor-pointer flex items-center gap-1 shrink-0">
                     <img className={`${!tabSize ? "w-[35px] h[35px]" : "w-[35px] h[35px]"}`} src="https://img.icons8.com/ios/50/shopping-cart--v1.png" alt="shopping-cart--v1"/>
                     {tabSize ? <nav className="cursor-pointer">Cart</nav> : null}
-                    <span className={`${!tabSize ? "right-0" : "right-6"} absolute top-0 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center`}>
+                    {totalItemCounts > 0 ?                     <span className={`${!tabSize ? "right-0" : "right-6"} absolute top-0 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center`}>
                     {totalItemCounts}
-                </span>
+                </span> : null}
                 </div>
                 <div className="flex shrink-0 items-center gap-1">
                     <img className={`${!tabSize ? "w-[25px] h[25px]" : "w-[35px] h[35px]"}`} src="https://img.icons8.com/pastel-glyph/64/user-male-circle.png" alt="user-male-circle"/>

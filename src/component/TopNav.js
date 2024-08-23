@@ -50,7 +50,7 @@ export default function TopNav() {
         </div>
         <div className="flex items-center gap-4 mr-3">
           <img
-            className="max-sm:flex"
+            className="max-sm:flex sm:hidden"
             width="30"
             height="30"
             src="https://img.icons8.com/ios/50/search--v1.png"

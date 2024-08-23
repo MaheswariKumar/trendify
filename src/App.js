@@ -10,6 +10,7 @@ import CartItems from './CartItems';
 
 function App() {
   const [itemCount, setItemCount] = useState({});
+  const [loading, setLoading] = useState(true);
   const [getData, setGetData] = useState([]);
   const [showPopUp, setShowPopUp] = useState(false);
   const [showMessage, setShowMessage] = useState("Item added to you cart");
@@ -18,6 +19,7 @@ function App() {
     try {
         const data = await axios.get("https://fakestoreapi.com/products");
         setGetData(data.data);
+          setLoading(false);
         console.log(getData);
     }
     catch(err) {
@@ -27,7 +29,7 @@ function App() {
 
 useEffect(()=> {
   fetchProducts();
-}, [getData])
+}, [])
 
 function handleShowPopUp() {
   setShowPopUp(true);
@@ -40,7 +42,7 @@ function handleShowPopUp() {
   return (
     <>
     <BrowserRouter>
-          <MyContext.Provider value={{itemCount, setItemCount, getData, handleShowPopUp, setShowMessage}}>
+          <MyContext.Provider value={{itemCount, setItemCount, getData, handleShowPopUp, setShowMessage, loading}}>
           <TopNav />
     <Routes>
 

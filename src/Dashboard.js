@@ -3,7 +3,7 @@ import { MyContext } from "./MyContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
-    const {getData, itemCount, setItemCount, handleShowPopUp} = useContext(MyContext);
+    const {getData, itemCount, setItemCount, handleShowPopUp, loading} = useContext(MyContext);
     const navigate = useNavigate();
 
     function handleAddtoCart(prodID) {
@@ -40,9 +40,12 @@ export default function Dashboard() {
     
     return (
         <>
-        <div className="pl-6 pt-24 w-full flex gap-12 max-sm:gap-4 flex-wrap bg-pink-200 min-h-[100vh]">
+        <div className="pt-24 w-full flex justify-center items-center gap-12 max-sm:gap-4 flex-wrap bg-pink-200 min-h-[100vh]">
+            {loading ? <svg class="circular-loader" viewBox="25 25 50 50">
+  <circle class="loader-path" cx="50" cy="50" r="20" fill="none" stroke="#70c542" stroke-width="4" />
+</svg> : <>
         {getData.map((data) => (
-        <div key={data.id} className="w-64 max-sm:w-32 bg-pink-200 border border-gray-200 rounded-lg shadow-lg overflow-hidden flex flex-col">
+        <div key={data.id} className="w-64 max-sm:w-[9rem] max-lg:w-[18rem] bg-pink-200 border border-gray-200 rounded-lg shadow-lg overflow-hidden flex flex-col">
             <div className="flex-shrink-0">
                 <img className="w-full h-56 max-sm:h-32 object-fill" src={data.image} alt="Product Image"/>
             </div>
@@ -67,8 +70,9 @@ export default function Dashboard() {
             </div>
             
         </div>
-    ))}
-        </div>
+    ))}</>
+            }
+        </div> 
         </>
     )
 }

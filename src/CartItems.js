@@ -57,7 +57,7 @@ export default function CartItems() {
       {/* Cart Items */}
       <div className="flex flex-col gap-6">
         {cartItems.length > 0 ? cartItems.map((data) => (
-          <div key={data.id} className="w-[50rem] border max-sm:w-[20rem] border-gray-200 rounded-lg shadow-lg overflow-hidden flex p-4">
+          <div key={data.id} className="w-[50rem] border max-sm:w-[20rem] max-lg:w-[40rem] border-gray-200 rounded-lg shadow-lg overflow-hidden flex p-4">
             <div className="flex-shrink-0">
               <img className="w-24 h-24 max-sm:w-20 h-20 object-cover" src={data.image} alt="Product Image"/>
             </div>
@@ -82,7 +82,7 @@ export default function CartItems() {
               )}
             </div>
           </div>
-        )) : <><div className="w-[50rem] border border-gray-200 rounded-lg shadow-lg overflow-hidden flex items-center p-4">
+        )) : <><div className="w-[50rem] border max-sm:w-[20rem] max-lg:w-[40rem] border-gray-200 rounded-lg shadow-lg overflow-hidden flex items-center p-4">
             <nav className="text-[#113155] font-bold text-lg">Items yet to Add!!!</nav>
             </div></>}
       </div>

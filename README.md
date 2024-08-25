@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+E-commerce Application
+This project is a responsive and interactive e-commerce application built with React. It allows users to browse products, add them to the cart, and place orders. The app is designed with a user-friendly interface and includes several key features.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
+Product Listing:
 
-## Available Scripts
+The app fetches product data from the Fake Store API and displays it in a grid layout on the dashboard.
+Each product card includes an image, title, description, price, and rating.
+Add to Cart Functionality:
 
-In the project directory, you can run:
+Users can add products to their cart directly from the product listing.
+The cart button updates dynamically to show the number of items in the cart.
+Cart Management:
 
-### `npm start`
+Users can view all the items they have added to their cart on the cart page.
+The cart page displays each product's details along with the quantity added.
+Users can increase, decrease, or remove items from the cart.
+Price Calculation:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The total price and discount (10%) are automatically calculated and displayed on the cart page.
+Users can see the total amount after discount, along with a breakdown of the charges.
+Order Placement:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+After reviewing the cart, users can place their order by clicking the "Place Order" button.
+A popup message confirms that the order was placed successfully.
+Responsive Design:
 
-### `npm test`
+The application is fully responsive, ensuring a seamless experience across different screen sizes.
+The layout adjusts for mobile, tablet, and desktop views, including adaptive navigation and product displays.
+Persistent State Management:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The app uses React's useContext and useState hooks to manage global state across components, including product data, cart items, and loading states.
+Loading State:
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+While data is being fetched from the API, a loading spinner is displayed to indicate progress to the user.
+Technologies Used
+React for building the user interface.
+React Router for client-side routing.
+Axios for making HTTP requests to the Fake Store API.
+Tailwind CSS for styling the components.
+Context API for managing global state.

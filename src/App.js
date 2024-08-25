@@ -8,12 +8,14 @@ import { MyContext } from "./component/MyContext";
 import CartItems from "./component/CartItems";
 
 function App() {
+  //States
   const [itemCount, setItemCount] = useState({});
   const [loading, setLoading] = useState(true);
   const [getData, setGetData] = useState([]);
   const [showPopUp, setShowPopUp] = useState(false);
   const [showMessage, setShowMessage] = useState("Item added to you cart");
 
+  // Function to fetch product data from the API
   async function fetchProducts() {
     try {
       const data = await axios.get("https://fakestoreapi.com/products");
@@ -25,10 +27,12 @@ function App() {
     }
   }
 
+  // useEffect hook to trigger the product data fetch on component mount
   useEffect(() => {
     fetchProducts();
   }, []);
 
+  // Function to handle the display of the pop-up message
   function handleShowPopUp() {
     setShowPopUp(true);
     setTimeout(() => {

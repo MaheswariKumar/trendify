@@ -1,12 +1,13 @@
-import { useState, useEffect, useContext } from "react";
-import { MyContext } from "./MyContext";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react"; 
+import { MyContext } from "./MyContext"; 
+import { useNavigate } from "react-router-dom"; 
 
 export default function Dashboard() {
-  const { getData, itemCount, setItemCount, handleShowPopUp, loading } =
-    useContext(MyContext);
-  const navigate = useNavigate();
+  // Destructure values from the custom context
+  const { getData, itemCount, setItemCount, handleShowPopUp, loading } = useContext(MyContext);
+  const navigate = useNavigate(); 
 
+  // Function to handle adding items to the cart
   function handleAddtoCart(prodID) {
     setItemCount((prevCounts) => ({
       ...prevCounts,
@@ -14,6 +15,7 @@ export default function Dashboard() {
     }));
   }
 
+  // Function to handle increasing the item count in the cart
   function handleIncButton(prodID) {
     setItemCount((prevCounts) => ({
       ...prevCounts,
@@ -21,6 +23,7 @@ export default function Dashboard() {
     }));
   }
 
+  // Function to handle decreasing the item count in the cart
   function handleDecButton(prodID) {
     setItemCount((prevCounts) => {
       const updateCount = (prevCounts[prodID] || 0) - 1;
@@ -30,7 +33,6 @@ export default function Dashboard() {
           [prodID]: 0,
         };
       }
-
       return {
         ...prevCounts,
         [prodID]: updateCount,
@@ -55,6 +57,7 @@ export default function Dashboard() {
           </svg>
         ) : (
           <>
+            {/* Map over the product data and display each product */}
             {getData.map((data) => (
               <div
                 key={data.id}
@@ -84,6 +87,7 @@ export default function Dashboard() {
                       </span>
                     </div>
                   </div>
+                  {/* If item is already in the cart, show quantity controls */}
                   {itemCount[data.id] > 0 ? (
                     <div className="flex items-center gap-2 justify-between">
                       <button
@@ -114,6 +118,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   ) : (
+                    // If item is not in the cart, show "Add to Cart" button
                     <button
                       onClick={() => {
                         handleAddtoCart(data.id);

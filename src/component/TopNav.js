@@ -3,9 +3,13 @@ import { MyContext } from "./MyContext";
 import { useNavigate } from "react-router-dom";
 
 export default function TopNav() {
+  // Extract itemCount from MyContext to get the number of items in the cart
   const { itemCount } = useContext(MyContext);
+
+  // Initialize navigate to allow redirecting to different routes
   const navigate = useNavigate();
 
+  // Calculate the total number of items in the cart by summing up the counts
   const totalItemCounts = Object.values(itemCount).reduce(
     (acc, count) => acc + count,
     0
@@ -14,10 +18,10 @@ export default function TopNav() {
   return (
     <>
       <div className="flex justify-between gap-14 items-center bg-pink-300 fixed w-full h-16">
-        <div className="max-sm:flex items-center pl-2 pt-1 gap-2 sm:flex items-center pl-2 pt-1 gap-2">
+        <div className="max-sm:flex items-center pl-2 pt-1 sm:flex items-center pl-2 pt-1 gap-2 w-full">
           <img
             onClick={() => navigate("/")}
-            className="max-sm:cursor-pointer rounded-full w-[35px] h-[35px] sm:cursor-pointer rounded-full w-[48px] h-[48px]"
+            className="max-sm:cursor-pointer max-sm:w-[33px] max-sm:h-[33px] rounded-full w-[35px] h-[35px] sm:cursor-pointer rounded-full w-[48px] h-[48px]"
             src="https://img.icons8.com/external-filled-outline-02-chattapat-/64/external-skateboard-sales-filled-outline-02-chattapat-.png"
             alt="external-skateboard-sales-filled-outline-02-chattapat-"
           />
@@ -43,12 +47,12 @@ export default function TopNav() {
             alt="search--v1"
           />
           <input
-            className="outline-0 bg-gray-200 rounded-md w-full max-w-[40rem]"
+            className="outline-0 bg-gray-200 rounded-md w-full max-w-[60rem]"
             type="text"
             placeholder="Search"
           ></input>
         </div>
-        <div className="flex items-center gap-4 mr-3">
+        <div className="flex items-center gap-4 max-sm:gap-3 mr-3 w-full justify-end">
           <img
             className="max-sm:flex sm:hidden"
             width="30"
@@ -61,7 +65,7 @@ export default function TopNav() {
             className="relative cursor-pointer flex items-center gap-1 shrink-0"
           >
             <img
-              className="max-lg:w-[35px] max-lg:h[35px] w-[35px] h[35px]"
+              className="max-lg:w-[30px] max-lg:h[30px] w-[35px] h[35px]"
               src="https://img.icons8.com/ios/50/shopping-cart--v1.png"
               alt="shopping-cart--v1"
             />
@@ -74,7 +78,7 @@ export default function TopNav() {
           </div>
           <div className="flex shrink-0 items-center gap-1">
             <img
-              className="max-lg:w-[25px] max-lg:h[25px] w-[35px] h[35px]"
+              className="max-lg:w-[30px] max-lg:h[30px] w-[35px] h[35px]"
               src="https://img.icons8.com/pastel-glyph/64/user-male-circle.png"
               alt="user-male-circle"
             />

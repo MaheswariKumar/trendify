@@ -1,17 +1,24 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { MyContext } from "./MyContext";
 
-export default function CartItems() {
-  const { getData, itemCount, setItemCount, handleShowPopUp, setShowMessage } =
-    useContext(MyContext);
 
+export default function CartItems() {
+  // Destructure the necessary values and functions from the context.
+  const { getData, itemCount, setItemCount, handleShowPopUp, setShowMessage } = useContext(MyContext);
+
+  // Filter products that have a quantity greater than 0 in the cart.
   const cartItems = getData.filter((product) => itemCount[product.id] > 0);
+
+  // Calculate the total price of items in the cart.
   const totalPrice = cartItems
     .map((product) => product.price * itemCount[product.id])
     .reduce((acc, curr) => acc + curr, 0)
     .toFixed(2);
+
+  // Calculate the total amount after applying a 10% discount.
   const totalAmt = (totalPrice - totalPrice * 0.1).toFixed(2);
 
+  // Handler to remove an item from the cart by setting its count to 0.
   function handleRemButton(prodID) {
     setItemCount((prevCounts) => ({
       ...prevCounts,
@@ -19,6 +26,7 @@ export default function CartItems() {
     }));
   }
 
+  // Handler to increase the quantity of an item in the cart.
   function handleIncButton(prodID) {
     setItemCount((prevCounts) => ({
       ...prevCounts,
@@ -26,6 +34,7 @@ export default function CartItems() {
     }));
   }
 
+  // Handler to decrease the quantity of an item in the cart, ensuring it doesn't go below 0.
   function handleDecButton(prodID) {
     setItemCount((prevCounts) => {
       const updateCount = (prevCounts[prodID] || 0) - 1;
@@ -35,7 +44,6 @@ export default function CartItems() {
           [prodID]: 0,
         };
       }
-
       return {
         ...prevCounts,
         [prodID]: updateCount,
@@ -43,15 +51,9 @@ export default function CartItems() {
     });
   }
 
-  function handleShowMessage() {
-    setShowMessage(true);
-    setTimeout(() => {
-      setShowMessage(false);
-    }, 1000);
-  }
-
   return (
     <>
+      {/* Main container for the cart items and price details */}
       <div className="pt-24 w-full flex justify-center bg-pink-200 min-h-[100vh]">
         <div className="flex max-sm:flex-col gap-6 w-full bg-pink-200 justify-center pl-4">
           <div className="flex flex-col gap-6">
@@ -119,6 +121,7 @@ export default function CartItems() {
                 </div>
               ))
             ) : (
+              // Display message when no items are in the cart
               <>
                 <div className="w-[50rem] border max-sm:w-[20rem] max-lg:w-[40rem] border-gray-200 rounded-lg shadow-lg overflow-hidden flex items-center p-4">
                   <nav className="text-[#113155] font-bold text-lg">
